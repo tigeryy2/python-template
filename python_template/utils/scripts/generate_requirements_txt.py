@@ -24,7 +24,7 @@ def main(root_dir: Path = PROJECT_ROOT_DIR):
                 continue
 
             req_txt_name: str = file_name.replace(".in", ".txt")
-            compile_command: str = f"uv pip compile {file_name} >> {req_txt_name}"
+            compile_command: str = f"uv pip compile {file_name} > {req_txt_name}"
 
             Loggable.log().info(f"Compiling '{file_name}' to '{req_txt_name}'")
             try:
