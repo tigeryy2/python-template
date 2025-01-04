@@ -6,3 +6,5 @@ wheel
 pytest
 pytest-cov
 pytest-html
+uv
+-e .
