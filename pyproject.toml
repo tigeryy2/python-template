@@ -17,7 +17,7 @@ dependencies = [
 compile-reqs = "python_template.utils.scripts.generate_requirements_txt:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = [".", "python_template"]    # there sometimes seems to be a discovery problem, possibly only bc `python.*`
 exclude = ["tests", "docs"]
 
 [tool.uv.pip]
