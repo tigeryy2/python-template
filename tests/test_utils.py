@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from python_template.utils.utils import change_dir
+from python_template.utils.utils import change_dir, dotenv_file_exists, get_env
 
 
 def test_change_dir_succeeds():
@@ -29,3 +29,11 @@ def test_change_dir_handles_exception():
 
     # Ensure we returned to the original directory
     assert Path.cwd() == original_dir
+
+
+@pytest.mark.parametrize("env_file_items", [{"SOME_KEY": "A_VALUE"}], indirect=True)
+def test_dotenv(env_file_items: dict):
+    assert dotenv_file_exists()
+
+    value1 = get_env("SOME_KEY")
+    assert value1 == "A_VALUE"
