@@ -24,8 +24,9 @@ def test_change_dir_handles_exception():
         change_dir(Path(temp_dir)),
     ):
         # Ensure the directory was changed
-        assert Path.cwd() == Path(temp_dir)
+        assert Path.cwd() == Path(temp_dir).resolve()
         # Raise an exception to trigger the finally
+        raise AssertionError()
 
     # Ensure we returned to the original directory
     assert Path.cwd() == original_dir
