@@ -7,6 +7,7 @@ name =  "python_template"
 version = "0.1.0"
 description = "Python template project"
 readme = "README.md"
+requires-python = ">=3.12"
 dependencies = [
     # use requirements.in to manage dependencies
 ]
@@ -22,6 +23,9 @@ exclude = ["tests", "docs"]
 
 [tool.uv.pip]
 universal = true    # UV to generate universal lockfiles
+
+[tool.uv.sources]
+python-template = { workspace = true }
 
 [tool.ruff]
 extend-exclude = []
@@ -56,3 +60,22 @@ log_cli_level = "INFO"
 log_cli_format = "[%(asctime)s] [%(levelname)s] %(message)s"
 log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 log_file = "./logs/pytest.log"
+
+[dependency-groups]
+dev = [
+    "colorama==0.4.6 ; sys_platform == 'win32'",
+    "coverage==7.6.10",
+    "iniconfig==2.0.0",
+    "jinja2==3.1.5",
+    "markupsafe==3.0.2",
+    "packaging==24.2",
+    "pluggy==1.5.0",
+    "pytest==8.3.4",
+    "pytest-cov==6.0.0",
+    "pytest-html==4.1.1",
+    "pytest-metadata==3.1.1",
+    "python-template",
+    "setuptools==75.6.0",
+    "uv==0.5.14",
+    "wheel==0.45.1",
+]
