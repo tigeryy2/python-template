@@ -18,12 +18,14 @@ def test_change_dir_succeeds():
 
 def test_change_dir_handles_exception():
     original_dir = Path.cwd()
-    with tempfile.TemporaryDirectory() as temp_dir:
-        with pytest.raises(Exception) as exc_info:
-            with change_dir(Path(temp_dir)):
-                # Ensure the directory was changed
-                assert Path.cwd() == Path(temp_dir)
-                # Raise an exception to trigger the finally
+    with (
+        tempfile.TemporaryDirectory() as temp_dir,
+        pytest.raises(AssertionError),
+        change_dir(Path(temp_dir)),
+    ):
+        # Ensure the directory was changed
+        assert Path.cwd() == Path(temp_dir)
+        # Raise an exception to trigger the finally
 
     # Ensure we returned to the original directory
     assert Path.cwd() == original_dir

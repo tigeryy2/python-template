@@ -1,6 +1,7 @@
 """
 Updates the requirements.txt file(s) with the latest dependencies.
 """
+
 import subprocess
 from pathlib import Path
 
@@ -31,8 +32,9 @@ def main(root_dir: Path = PROJECT_ROOT_DIR):
                 Loggable.log().debug(f"Running command: {compile_command}")
                 subprocess.run(compile_command, shell=True, check=True)
             except subprocess.CalledProcessError as err:
-                Loggable.log().error(f"Error compiling '{file_name}' to '{req_txt_name}': {err}")
-
+                Loggable.log().error(
+                    f"Error compiling '{file_name}' to '{req_txt_name}': {err}"
+                )
 
 
 if __name__ == "__main__":

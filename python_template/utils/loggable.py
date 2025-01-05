@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import logging
 import sys
-from logging import handlers
 from pathlib import Path
 
 
