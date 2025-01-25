@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 import sys
+from logging import handlers
 from pathlib import Path
 
 
@@ -45,7 +46,7 @@ class Loggable:
 
         if log_path is not None:
             # setup logging to file
-            file_handler = logging.handlers.RotatingFileHandler(
+            file_handler = handlers.RotatingFileHandler(
                 log_path, maxBytes=1000000, backupCount=5
             )
             file_handler.setLevel(file_log_level)
